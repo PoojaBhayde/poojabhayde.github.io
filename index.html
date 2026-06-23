@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ============================== SEO ============================== -->
+  <title>Pooja Santosh Bhayde — Node.js Backend Developer</title>
+  <meta name="description" content="Pooja Santosh Bhayde is a Node.js backend developer crafting fast, reliable APIs and backend services that scale to 250,000+ users — Express.js, MySQL, MongoDB, Redis, Kafka." />
+  <meta name="author" content="Pooja Santosh Bhayde" />
+  <meta name="keywords" content="Node.js Backend Developer, REST API, Express.js, MySQL, MongoDB, Redis, Kafka, Backend Engineer, Pooja Bhayde" />
+  <link rel="canonical" href="https://example.com/" /><!-- TODO: replace with your live URL -->
+  <meta name="theme-color" content="#080C18" id="theme-color-meta" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Pooja Santosh Bhayde — Node.js Backend Developer" />
+  <meta property="og:description" content="Backend systems built to hold the load. Fast, reliable APIs at enterprise scale." />
+  <meta property="og:url" content="https://example.com/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Pooja Santosh Bhayde — Node.js Backend Developer" />
+  <meta name="twitter:description" content="Backend systems built to hold the load. Fast, reliable APIs at enterprise scale." />
+
+  <!-- JSON-LD structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Pooja Santosh Bhayde",
+    "jobTitle": "Node.js Backend Developer",
+    "email": "mailto:poojabhayde08@gmail.com",
+    "url": "https://example.com/",
+    "sameAs": [
+      "https://www.linkedin.com/in/pooja-bhayde-backend/",
+      "https://github.com/PoojaBhayde"
+    ],
+    "knowsAbout": ["Node.js", "REST APIs", "Express.js", "MySQL", "MongoDB", "Redis", "Apache Kafka", "Backend Architecture"],
+    "address": { "@type": "PostalAddress", "addressLocality": "Mumbai", "addressRegion": "Maharashtra", "addressCountry": "IN" }
+  }
+  </script>
+
+  <!-- Inline SVG favicon (PB monogram) — no external file needed -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23080C18'/%3E%3Ctext x='50%25' y='54%25' font-family='Space Grotesk, Arial' font-size='30' font-weight='700' fill='%232DD4BF' text-anchor='middle' dominant-baseline='middle'%3EP%3C/text%3E%3Ctext x='50%25' y='54%25' font-family='Space Grotesk, Arial' font-size='30' font-weight='700' fill='%23F5B544' text-anchor='middle' dominant-baseline='middle' dx='12'%3Eb%3C/text%3E%3C/svg%3E" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       CONSOLE — design tokens
+       ============================================================ */
+    :root {
+      /* dark (default) */
+      --bg:        #080C18;
+      --bg-elev:   #0E1424;
+      --glass:     rgba(148,163,184,0.06);
+      --glass-solid: rgba(20,28,46,0.78); /* fallback when no backdrop-filter */
+      --border:    rgba(148,163,184,0.16);
+      --border-strong: rgba(148,163,184,0.30);
+      --text:      #EAEEF6;
+      --text-dim:  #97A2B6;
+      --text-faint:#5C6678;
+      --accent:    #2DD4BF;  /* teal — brand */
+      --accent-soft: rgba(45,212,191,0.14);
+      --accent-2:  #F5B544;  /* amber — warm secondary */
+      --accent-2-soft: rgba(245,181,68,0.14);
+      --ok:        #4ADE80;  /* status green — reserved for 200/online */
+      --put:       #93A4C4;  /* muted method */
+      --glow-1:    rgba(45,212,191,0.16);
+      --glow-2:    rgba(245,181,68,0.10);
+      --grid-dot:  rgba(148,163,184,0.05);
+      --shadow:    0 24px 60px -28px rgba(0,0,0,0.85);
+
+      --ff-display: "Space Grotesk", system-ui, sans-serif;
+      --ff-body:    "Manrope", system-ui, sans-serif;
+      --ff-mono:    "JetBrains Mono", ui-monospace, monospace;
+
+      --maxw: 1140px;
+      --radius: 18px;
+      --radius-sm: 12px;
+      --nav-h: 72px;
+    }
+
+    html[data-theme="light"] {
+      --bg:        #F5F7FB;
+      --bg-elev:   #FFFFFF;
+      --glass:     rgba(255,255,255,0.62);
+      --glass-solid: rgba(255,255,255,0.92);
+      --border:    rgba(15,23,42,0.10);
+      --border-strong: rgba(15,23,42,0.18);
+      --text:      #0E1424;
+      --text-dim:  #4A5568;
+      --text-faint:#8A94A6;
+      --accent:    #0D9488;
+      --accent-soft: rgba(13,148,136,0.12);
+      --accent-2:  #C2790B;
+      --accent-2-soft: rgba(194,121,11,0.12);
+      --ok:        #16A34A;
+      --put:       #64748B;
+      --glow-1:    rgba(13,148,136,0.10);
+      --glow-2:    rgba(194,121,11,0.08);
+      --grid-dot:  rgba(15,23,42,0.045);
+      --shadow:    0 24px 60px -30px rgba(15,23,42,0.30);
+    }
+
+    /* ============================================================
+       Base
+       ============================================================ */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: var(--ff-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 1rem;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      transition: background .4s ease, color .4s ease;
+    }
+    /* Ambient background layer */
+    .ambient {
+      position: fixed; inset: 0; z-index: -2; pointer-events: none;
+      background:
+        radial-gradient(60vw 60vw at 12% -6%, var(--glow-1), transparent 60%),
+        radial-gradient(50vw 50vw at 100% 8%, var(--glow-2), transparent 60%),
+        radial-gradient(46vw 46vw at 80% 100%, var(--glow-1), transparent 62%);
+      animation: drift 22s ease-in-out infinite alternate;
+    }
+    .ambient::after {
+      content:""; position:absolute; inset:0;
+      background-image: radial-gradient(var(--grid-dot) 1px, transparent 1px);
+      background-size: 30px 30px;
+      mask-image: radial-gradient(80% 80% at 50% 30%, #000 40%, transparent 100%);
+    }
+    @keyframes drift { from { transform: translate3d(0,0,0); } to { transform: translate3d(0,-18px,0); } }
+
+    img { max-width: 100%; display: block; }
+    a { color: var(--accent); text-decoration: none; }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    .wrap { width: min(100% - 2.4rem, var(--maxw)); margin-inline: auto; }
+
+    .mono { font-family: var(--ff-mono); }
+    .eyebrow {
+      font-family: var(--ff-mono);
+      font-size: .8rem; letter-spacing: .12em; text-transform: lowercase;
+      color: var(--accent); display: inline-flex; align-items: center; gap: .5rem;
+    }
+    .eyebrow::before { content: "//"; color: var(--accent-2); }
+
+    h1, h2, h3 { font-family: var(--ff-display); font-weight: 700; line-height: 1.06; letter-spacing: -0.02em; }
+
+    /* Glass primitive */
+    .glass {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,0.05);
+      -webkit-backdrop-filter: blur(16px) saturate(150%);
+      backdrop-filter: blur(16px) saturate(150%);
+    }
+    @supports not ((-webkit-backdrop-filter: blur(2px)) or (backdrop-filter: blur(2px))) {
+      .glass { background: var(--glass-solid); }
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; gap: .55rem;
+      font-family: var(--ff-mono); font-size: .9rem; font-weight: 500;
+      padding: .8rem 1.3rem; border-radius: 999px; cursor: pointer;
+      border: 1px solid transparent; transition: transform .18s ease, box-shadow .25s ease, background .25s ease, border-color .25s ease, color .25s ease;
+      white-space: nowrap;
+    }
+    .btn svg { width: 1.05em; height: 1.05em; }
+    .btn-primary { background: var(--accent); color: #04121a; box-shadow: 0 10px 30px -10px var(--accent); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 34px -12px var(--accent); }
+    .btn-ghost { background: transparent; color: var(--text); border-color: var(--border-strong); }
+    .btn-ghost:hover { transform: translateY(-2px); border-color: var(--accent); color: var(--accent); }
+
+    .section { padding-block: clamp(4.5rem, 9vw, 7.5rem); position: relative; }
+    .section-head { max-width: 640px; margin-bottom: 3rem; }
+    .section-head h2 { font-size: clamp(1.9rem, 4.4vw, 2.9rem); margin-top: .8rem; }
+    .section-head p { color: var(--text-dim); margin-top: .9rem; font-size: 1.05rem; }
+    section[id] { scroll-margin-top: 92px; }
+
+    /* ============================================================
+       Navigation
+       ============================================================ */
+    header.nav {
+      position: sticky; top: 0; z-index: 100;
+      height: var(--nav-h); display: flex; align-items: center;
+      border-bottom: 1px solid transparent; transition: border-color .3s, background .3s;
+    }
+    header.nav.scrolled {
+      background: var(--glass); border-bottom-color: var(--border);
+      -webkit-backdrop-filter: blur(14px) saturate(140%);
+      backdrop-filter: blur(14px) saturate(140%);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+    .brand { font-family: var(--ff-mono); font-weight: 600; font-size: 1.02rem; letter-spacing: -.01em; color: var(--text); display: inline-flex; align-items: center; gap: .1rem; }
+    .brand b { color: var(--accent); font-weight: 600; }
+    .brand .blink { color: var(--accent-2); animation: blink 1.1s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    nav.links { display: flex; align-items: center; gap: .35rem; }
+    nav.links a {
+      font-family: var(--ff-mono); font-size: .85rem; color: var(--text-dim);
+      padding: .5rem .8rem; border-radius: 999px; transition: color .2s, background .2s;
+    }
+    nav.links a:hover, nav.links a.active { color: var(--text); background: var(--accent-soft); }
+    nav.links a.active { color: var(--accent); }
+
+    .nav-tools { display: flex; align-items: center; gap: .5rem; }
+    .icon-btn {
+      width: 42px; height: 42px; display: grid; place-items: center; cursor: pointer;
+      border-radius: 12px; border: 1px solid var(--border); background: var(--glass); color: var(--text);
+      transition: transform .18s, border-color .2s, color .2s;
+    }
+    .icon-btn:hover { transform: translateY(-2px); border-color: var(--accent); color: var(--accent); }
+    .icon-btn svg { width: 20px; height: 20px; }
+    .theme-toggle .moon { display: none; }
+    html[data-theme="light"] .theme-toggle .sun { display: none; }
+    html[data-theme="light"] .theme-toggle .moon { display: block; }
+
+    .hamburger { display: none; }
+
+    /* Mobile menu sheet */
+    .mobile-menu {
+      position: fixed; inset: var(--nav-h) 0 auto 0; z-index: 90;
+      transform: translateY(-120%); transition: transform .35s cubic-bezier(.22,1,.36,1);
+      padding: 1.2rem; margin: .6rem; border-radius: var(--radius);
+    }
+    .mobile-menu.open { transform: translateY(0); }
+    .mobile-menu a { display: block; font-family: var(--ff-mono); font-size: 1rem; color: var(--text); padding: .85rem .6rem; border-radius: 10px; }
+    .mobile-menu a:hover { background: var(--accent-soft); color: var(--accent); }
+
+    /* ============================================================
+       Hero
+       ============================================================ */
+    .hero { padding-top: clamp(2.5rem, 6vw, 4.5rem); padding-bottom: clamp(2rem, 5vw, 3rem); }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+
+    .status-chip {
+      display: inline-flex; align-items: center; gap: .6rem; padding: .35rem .8rem .35rem .4rem;
+      border-radius: 999px; border: 1px solid var(--border); background: var(--glass);
+      font-family: var(--ff-mono); font-size: .78rem; color: var(--text-dim); margin-bottom: 1.4rem;
+    }
+    .status-chip .avatar-mini { width: 30px; height: 30px; border-radius: 50%; overflow: hidden; flex: none; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); position: relative; }
+    .dot::after { content:""; position:absolute; inset:-4px; border-radius:50%; border:1px solid var(--ok); opacity:.5; animation: ping 1.8s ease-out infinite; }
+    @keyframes ping { 0% { transform: scale(.6); opacity:.6;} 100% { transform: scale(1.8); opacity:0; } }
+
+    .hero h1 { font-size: clamp(2.6rem, 6.5vw, 4.4rem); }
+    .hero h1 .grad { background: linear-gradient(100deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero .tagline { color: var(--text-dim); font-size: clamp(1.05rem, 2.2vw, 1.22rem); max-width: 34ch; margin-top: 1.3rem; }
+    .hero-cta { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 2rem; }
+    .hero-social { display: flex; gap: .6rem; margin-top: 1.8rem; }
+    .hero-social a { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px; border: 1px solid var(--border); color: var(--text-dim); transition: transform .18s, color .2s, border-color .2s; }
+    .hero-social a:hover { transform: translateY(-3px); color: var(--accent); border-color: var(--accent); }
+    .hero-social svg { width: 20px; height: 20px; }
+
+    /* Terminal / live request log — the signature */
+    .terminal { padding: 0; overflow: hidden; }
+    .term-bar { display: flex; align-items: center; gap: .7rem; padding: .85rem 1.1rem; border-bottom: 1px solid var(--border); }
+    .term-dots { display: flex; gap: .4rem; }
+    .term-dots i { width: 11px; height: 11px; border-radius: 50%; display: block; }
+    .term-dots i:nth-child(1){ background:#ff5f57; } .term-dots i:nth-child(2){ background:#febc2e; } .term-dots i:nth-child(3){ background:#28c840; }
+    .term-title { font-family: var(--ff-mono); font-size: .76rem; color: var(--text-faint); margin-left: auto; display: inline-flex; align-items: center; gap: .5rem; }
+    .term-body {
+      font-family: var(--ff-mono); font-size: clamp(.72rem, 1.5vw, .82rem); line-height: 1.95;
+      padding: 1.1rem 1.2rem; min-height: 270px; display: flex; flex-direction: column; justify-content: flex-end;
+    }
+    .log-row { display: flex; align-items: center; gap: .6rem; white-space: nowrap; opacity: 0; transform: translateY(6px); animation: rowIn .35s ease forwards; }
+    @keyframes rowIn { to { opacity: 1; transform: none; } }
+    .method { font-weight: 600; min-width: 3.1em; }
+    .m-get { color: var(--accent); } .m-post { color: var(--accent-2); } .m-put { color: var(--put); }
+    .tag-sys { color: var(--text-faint); min-width: 3.1em; }
+    .path { color: var(--text); overflow: hidden; }
+    .code { color: var(--ok); margin-left: auto; }
+    .ms { color: var(--text-faint); min-width: 4.3em; text-align: right; }
+    .cursor { display: inline-block; width: .55em; height: 1.05em; background: var(--accent); margin-left: 2px; vertical-align: -2px; animation: blink 1s steps(1) infinite; }
+
+    /* ============================================================
+       Stats
+       ============================================================ */
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .stat { padding: 1.6rem 1.4rem; text-align: left; }
+    .stat .num { font-family: var(--ff-display); font-size: clamp(2.1rem, 5vw, 3rem); font-weight: 700; background: linear-gradient(120deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .stat .label { font-family: var(--ff-mono); font-size: .8rem; color: var(--text-dim); margin-top: .4rem; }
+
+    /* ============================================================
+       About
+       ============================================================ */
+    .about-grid { display: grid; grid-template-columns: 280px 1fr; gap: clamp(2rem, 5vw, 3.5rem); align-items: start; }
+    .portrait-frame { position: relative; }
+    .portrait {
+      aspect-ratio: 1; border-radius: 22px; overflow: hidden; border: 1px solid var(--border);
+      background: linear-gradient(160deg, var(--bg-elev), var(--bg));
+    }
+    .portrait-frame::before {
+      content:""; position:absolute; inset:-2px; border-radius:24px; z-index:-1;
+      background: linear-gradient(140deg, var(--accent), transparent 45%, var(--accent-2));
+      opacity:.6; filter: blur(2px);
+    }
+    .portrait-badge {
+      position: absolute; bottom: -14px; left: 50%; transform: translateX(-50%);
+      font-family: var(--ff-mono); font-size: .74rem; padding: .45rem .9rem; border-radius: 999px;
+      background: var(--bg-elev); border: 1px solid var(--border); color: var(--text-dim); display: flex; align-items: center; gap: .45rem;
+    }
+    .about-body p { color: var(--text-dim); font-size: 1.08rem; margin-bottom: 1.1rem; }
+    .about-body p strong { color: var(--text); font-weight: 600; }
+    .about-body .lead { color: var(--text); font-size: 1.2rem; font-family: var(--ff-display); font-weight: 500; letter-spacing: -.01em; line-height: 1.35; }
+    .highlights { display: grid; grid-template-columns: repeat(2, 1fr); gap: .9rem; margin-top: 1.8rem; }
+    .hl { display: flex; gap: .8rem; padding: 1rem 1.1rem; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--glass); }
+    .hl svg { width: 22px; height: 22px; color: var(--accent); flex: none; margin-top: 2px; }
+    .hl h4 { font-family: var(--ff-mono); font-size: .9rem; color: var(--text); font-weight: 600; }
+    .hl p { font-size: .86rem; color: var(--text-dim); margin: .2rem 0 0; }
+
+    /* ============================================================
+       Skills
+       ============================================================ */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(228px, 1fr)); gap: 1rem; }
+    .skill { padding: 1.4rem; transition: transform .25s ease, border-color .25s ease; outline: none; }
+    .skill:hover, .skill:focus-visible { transform: translateY(-4px); border-color: var(--accent); }
+    .skill-head { display: flex; align-items: center; justify-content: space-between; gap: .6rem; }
+    .skill-name { font-family: var(--ff-display); font-weight: 600; font-size: 1.18rem; }
+    .skill-tag { font-family: var(--ff-mono); font-size: .68rem; padding: .25rem .55rem; border-radius: 999px; background: var(--accent-soft); color: var(--accent); white-space: nowrap; }
+    .meter { height: 8px; border-radius: 999px; background: var(--accent-soft); margin: 1.05rem 0 .7rem; overflow: hidden; position: relative; }
+    .meter-fill {
+      display: block; height: 100%; width: 0; border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transition: width 1.3s cubic-bezier(.22,1,.36,1);
+      -webkit-mask-image: repeating-linear-gradient(90deg, #000 0 9px, transparent 9px 12px);
+      mask-image: repeating-linear-gradient(90deg, #000 0 9px, transparent 9px 12px);
+    }
+    .skill-note { font-size: .85rem; color: var(--text-dim); min-height: 2.4em; }
+
+    .also { margin-top: 2.2rem; }
+    .also-label { font-family: var(--ff-mono); font-size: .8rem; color: var(--text-faint); margin-bottom: .9rem; }
+    .pills { display: flex; flex-wrap: wrap; gap: .55rem; }
+    .pill { font-family: var(--ff-mono); font-size: .82rem; padding: .5rem .9rem; border-radius: 999px; border: 1px solid var(--border); color: var(--text-dim); background: var(--glass); transition: transform .15s, color .2s, border-color .2s; }
+    .pill:hover { transform: translateY(-2px); color: var(--accent); border-color: var(--accent); }
+
+    /* ============================================================
+       Projects
+       ============================================================ */
+    .projects { display: flex; flex-direction: column; gap: 1.4rem; }
+    .project { display: grid; grid-template-columns: 340px 1fr; overflow: hidden; transition: transform .3s ease, border-color .3s ease; }
+    .project:hover { transform: translateY(-4px); border-color: var(--border-strong); }
+    .project-cover { position: relative; min-height: 230px; background: linear-gradient(155deg, var(--bg-elev), var(--bg)); border-right: 1px solid var(--border); overflow: hidden; }
+    .project-cover svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .project:hover .project-cover .pulse { animation-play-state: running; }
+    .project-cover .badge-priv { position: absolute; top: 14px; left: 14px; font-family: var(--ff-mono); font-size: .68rem; padding: .35rem .65rem; border-radius: 999px; background: rgba(8,12,24,0.6); border: 1px solid var(--border); color: var(--accent-2); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+    .project-body { padding: 1.7rem; }
+    .project-body .org { font-family: var(--ff-mono); font-size: .76rem; color: var(--accent); letter-spacing: .04em; }
+    .project-body h3 { font-size: 1.5rem; margin: .35rem 0 .7rem; }
+    .project-body > p { color: var(--text-dim); font-size: .96rem; }
+    .feat { list-style: none; margin: 1.1rem 0 1.3rem; display: grid; gap: .5rem; }
+    .feat li { position: relative; padding-left: 1.4rem; font-size: .92rem; color: var(--text-dim); }
+    .feat li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-family: var(--ff-mono); }
+    .stack-row { display: flex; flex-wrap: wrap; gap: .45rem; margin-bottom: 1.3rem; }
+    .stack-row span { font-family: var(--ff-mono); font-size: .74rem; padding: .3rem .6rem; border-radius: 7px; background: var(--accent-2-soft); color: var(--accent-2); }
+    .project-links { display: flex; flex-wrap: wrap; gap: .7rem; }
+    .link-tag {
+      display: inline-flex; align-items: center; gap: .45rem; font-family: var(--ff-mono); font-size: .82rem;
+      padding: .55rem 1rem; border-radius: 999px; border: 1px solid var(--border); color: var(--text-dim);
+      cursor: not-allowed;
+    }
+    .link-tag svg { width: 1em; height: 1em; }
+    a.link-tag { color: var(--text); cursor: pointer; transition: transform .15s, color .2s, border-color .2s; }
+    a.link-tag:hover { transform: translateY(-2px); color: var(--accent); border-color: var(--accent); }
+
+    /* ============================================================
+       Timeline
+       ============================================================ */
+    .timeline { position: relative; max-width: 760px; margin-inline: auto; padding-left: 2.2rem; }
+    .timeline::before { content:""; position: absolute; left: 7px; top: 6px; bottom: 6px; width: 2px; background: linear-gradient(var(--accent), var(--accent-2), transparent); }
+    .tl-item { position: relative; padding-bottom: 2.4rem; }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-item::before {
+      content:""; position: absolute; left: calc(-2.2rem + 1px); top: 5px; width: 14px; height: 14px; border-radius: 50%;
+      background: var(--bg); border: 2px solid var(--accent); box-shadow: 0 0 0 4px var(--accent-soft);
+    }
+    .tl-item.edu::before { border-color: var(--accent-2); box-shadow: 0 0 0 4px var(--accent-2-soft); }
+    .tl-date { font-family: var(--ff-mono); font-size: .78rem; color: var(--text-faint); }
+    .tl-card { margin-top: .5rem; padding: 1.3rem 1.4rem; }
+    .tl-card h3 { font-size: 1.2rem; }
+    .tl-role { font-family: var(--ff-mono); font-size: .85rem; color: var(--accent); margin: .2rem 0 .6rem; }
+    .tl-card p { color: var(--text-dim); font-size: .92rem; }
+    .tl-tag { display: inline-block; font-family: var(--ff-mono); font-size: .68rem; padding: .25rem .6rem; border-radius: 999px; background: var(--accent-2-soft); color: var(--accent-2); margin-bottom: .55rem; }
+
+    /* ============================================================
+       Contact
+       ============================================================ */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: clamp(2rem, 5vw, 3.5rem); align-items: start; }
+    .contact-aside h2 { font-size: clamp(1.9rem, 4.4vw, 2.7rem); margin: .8rem 0 1rem; }
+    .contact-aside > p { color: var(--text-dim); margin-bottom: 1.8rem; }
+    .contact-list { display: grid; gap: .8rem; }
+    .contact-list a, .contact-list .ci {
+      display: flex; align-items: center; gap: .9rem; padding: .95rem 1.1rem; border-radius: var(--radius-sm);
+      border: 1px solid var(--border); background: var(--glass); color: var(--text); transition: transform .18s, border-color .2s;
+    }
+    .contact-list a:hover { transform: translateY(-2px); border-color: var(--accent); }
+    .contact-list svg { width: 20px; height: 20px; color: var(--accent); flex: none; }
+    .contact-list .ci-main { font-family: var(--ff-mono); font-size: .9rem; }
+    .contact-list .ci-sub { font-size: .76rem; color: var(--text-faint); }
+
+    form.contact-form { padding: 1.8rem; }
+    .field { margin-bottom: 1.1rem; }
+    .field label { display: block; font-family: var(--ff-mono); font-size: .78rem; color: var(--text-dim); margin-bottom: .45rem; }
+    .field label .req { color: var(--accent-2); }
+    .field input, .field textarea {
+      width: 100%; font-family: var(--ff-body); font-size: .95rem; color: var(--text);
+      background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: .8rem .9rem; transition: border-color .2s, box-shadow .2s;
+    }
+    .field input:focus, .field textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+    .field textarea { resize: vertical; min-height: 130px; }
+    .form-status { font-family: var(--ff-mono); font-size: .82rem; margin-top: .9rem; min-height: 1.2em; }
+    .form-status.ok { color: var(--ok); } .form-status.err { color: #fb7185; }
+
+    /* ============================================================
+       Footer
+       ============================================================ */
+    footer.site { border-top: 1px solid var(--border); padding-block: 2.4rem; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .footer-inner p { font-family: var(--ff-mono); font-size: .82rem; color: var(--text-faint); }
+    .footer-inner .uptime { display: inline-flex; align-items: center; gap: .5rem; }
+    .to-top { font-family: var(--ff-mono); font-size: .8rem; color: var(--text-dim); display: inline-flex; align-items: center; gap: .4rem; }
+    .to-top:hover { color: var(--accent); }
+
+    /* Reveal animation */
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    .skip-link {
+      position: absolute; left: -999px; top: 8px; z-index: 200; background: var(--accent); color: #04121a;
+      padding: .6rem 1rem; border-radius: 8px; font-family: var(--ff-mono); font-size: .85rem;
+    }
+    .skip-link:focus { left: 12px; }
+
+    /* ============================================================
+       Responsive
+       ============================================================ */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .portrait-frame { max-width: 240px; margin-inline: auto; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .project { grid-template-columns: 1fr; }
+      .project-cover { min-height: 180px; border-right: none; border-bottom: 1px solid var(--border); }
+    }
+    @media (max-width: 820px) {
+      nav.links { display: none; }
+      .hamburger { display: grid; }
+      .stats { grid-template-columns: 1fr; }
+      .highlights { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 520px) {
+      .hero-cta { flex-direction: column; align-items: stretch; }
+      .hero-cta .btn { justify-content: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+      .reveal { opacity: 1; transform: none; }
+      .cursor, .dot::after, .ambient { animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#about">Skip to content</a>
+  <div class="ambient" aria-hidden="true"></div>
+
+  <!-- ============================== NAV ============================== -->
+  <header class="nav" id="nav">
+    <div class="wrap nav-inner">
+      <a href="#home" class="brand" aria-label="Pooja Bhayde — home">pooja<b>.</b>dev<span class="blink" aria-hidden="true">_</span></a>
+      <nav class="links" aria-label="Primary">
+        <a href="#home">home</a>
+        <a href="#about">about</a>
+        <a href="#skills">stack</a>
+        <a href="#work">work</a>
+        <a href="#timeline">journey</a>
+        <a href="#contact">contact</a>
+      </nav>
+      <div class="nav-tools">
+        <button class="icon-btn theme-toggle" id="themeToggle" aria-label="Toggle dark and light mode">
+          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+        <button class="icon-btn hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-menu glass" id="mobileMenu" aria-label="Mobile">
+    <a href="#home">home</a>
+    <a href="#about">about</a>
+    <a href="#skills">stack</a>
+    <a href="#work">work</a>
+    <a href="#timeline">journey</a>
+    <a href="#contact">contact</a>
+  </nav>
+
+  <main id="home">
+    <!-- ============================== HERO ============================== -->
+    <section class="hero wrap" aria-label="Introduction">
+      <div class="hero-grid">
+        <div>
+          <!-- Profile image lives here as a status chip. To use a real photo:
+               replace the inner <svg> with <img src="your-photo.jpg" alt="Pooja Bhayde" style="width:100%;height:100%;object-fit:cover"> -->
+          <span class="status-chip">
+            <span class="avatar-mini" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><rect width="64" height="64" fill="#0E1424"/><text x="50%" y="56%" font-family="Space Grotesk" font-size="26" font-weight="700" fill="#2DD4BF" text-anchor="middle" dominant-baseline="middle">PB</text></svg>
+            </span>
+            <span class="dot" aria-hidden="true"></span> available for backend roles
+          </span>
+
+          <p class="eyebrow">node.js backend developer</p>
+          <h1>Backends built to <span class="grad">hold the load.</span></h1>
+          <p class="tagline">I design fast, reliable APIs and backend services that scale to <strong style="color:var(--text)">250,000+ users</strong> — and stay up when it matters.</p>
+
+          <div class="hero-cta">
+            <a href="#work" class="btn btn-primary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h10M4 17h7"/></svg>
+              View my work
+            </a>
+            <a href="#contact" class="btn btn-ghost">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+              Get in touch
+            </a>
+          </div>
+
+          <div class="hero-social" aria-label="Social links">
+            <a href="https://github.com/PoojaBhayde" target="_blank" rel="noopener" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 .1.8 1.8 2.8 1.3.1-.7.4-1.2.7-1.5-2.5-.3-5.2-1.3-5.2-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C18.8 5 19.8 5.3 19.8 5.3c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.2 5.7.4.3.8 1 .8 2.1v3.1c0 .3.2.7.8.6A11.5 11.5 0 0 0 23.5 12C23.5 5.7 18.3.5 12 .5z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/pooja-bhayde-backend/" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33 0-3.04-1.85-3.04s-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05a3.75 3.75 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+            </a>
+            <a href="mailto:poojabhayde08@gmail.com" aria-label="Email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Signature: live request log -->
+        <div class="terminal glass" role="img" aria-label="A live API request log showing healthy 200 responses with low latency">
+          <div class="term-bar">
+            <span class="term-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="term-title"><span class="dot" aria-hidden="true"></span> api · live · 200 OK</span>
+          </div>
+          <div class="term-body" id="termBody"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== STATS ============================== -->
+    <section class="wrap" aria-label="Key metrics" style="padding-block: 1rem 3rem;">
+      <div class="stats">
+        <div class="stat glass reveal"><div class="num" data-count="250" data-suffix="K+">0</div><div class="label">employees served by PeopleFirst</div></div>
+        <div class="stat glass reveal"><div class="num" data-count="30" data-suffix="%">0</div><div class="label">lower API latency, by design</div></div>
+        <div class="stat glass reveal"><div class="num" data-count="4" data-suffix="+">0</div><div class="label">years building production backends</div></div>
+      </div>
+    </section>
+
+    <!-- ============================== ABOUT ============================== -->
+    <section id="about" class="section wrap">
+      <div class="about-grid">
+        <div class="portrait-frame reveal">
+          <!-- Larger profile image. Swap the <svg> below for <img src="your-photo.jpg" alt="Pooja Santosh Bhayde"> -->
+          <div class="portrait">
+            <svg viewBox="0 0 200 200" width="100%" height="100%">
+              <defs><linearGradient id="pg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2DD4BF"/><stop offset="1" stop-color="#F5B544"/></linearGradient></defs>
+              <text x="50%" y="54%" font-family="Space Grotesk" font-size="92" font-weight="700" fill="url(#pg)" text-anchor="middle" dominant-baseline="middle">PB</text>
+            </svg>
+          </div>
+          <span class="portrait-badge"><span class="dot" aria-hidden="true"></span> Mumbai, India</span>
+        </div>
+
+        <div class="about-body">
+          <p class="eyebrow">about</p>
+          <p class="lead reveal">I build the systems people never have to think about.</p>
+          <p class="reveal">My work at <strong>Jio Platforms</strong> powers <strong>PeopleFirst</strong>, Reliance's enterprise HR platform serving <strong>250,000+ employees</strong> across web and mobile — covering attendance, payroll, access management, reimbursements, and corporate services.</p>
+          <p class="reveal">With <strong>4+ years</strong> in backend development, I specialize in designing and delivering production-grade systems that are fast, reliable, and built to handle real-world load — from RESTful API design to caching, async messaging, and database performance tuning.</p>
+
+          <div class="highlights">
+            <div class="hl reveal">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l6-6-6-6M12 19h8"/></svg>
+              <div><h4>Scalable REST APIs</h4><p>Core HR workflows on Node.js, Express &amp; MySQL.</p></div>
+            </div>
+            <div class="hl reveal">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+              <div><h4>Redis + Kafka at scale</h4><p>Caching &amp; async messaging for high-volume traffic.</p></div>
+            </div>
+            <div class="hl reveal">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>
+              <div><h4>Query optimization</h4><p>Faster, transaction-safe MySQL &amp; MongoDB.</p></div>
+            </div>
+            <div class="hl reveal">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22V12M12 12 3 7M12 12l9-5M3 7v10l9 5 9-5V7l-9-5-9 5z"/></svg>
+              <div><h4>End-to-end ownership</h4><p>Backend modules from build to deploy &amp; maintain.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== SKILLS ============================== -->
+    <section id="skills" class="section wrap">
+      <div class="section-head">
+        <p class="eyebrow">stack</p>
+        <h2>The tools I reach for</h2>
+        <p>A backend toolkit tuned for performance and reliability. Hover or focus a card for how I use it.</p>
+      </div>
+
+      <div class="skills-grid">
+        <article class="skill glass reveal" tabindex="0">
+          <div class="skill-head"><span class="skill-name">Node.js</span><span class="skill-tag">primary</span></div>
+          <div class="meter"><span class="meter-fill" data-level="92"></span></div>
+          <p class="skill-note">Event-driven services and async workflows built for concurrency.</p>
+        </article>
+        <article class="skill glass reveal" tabindex="0">
+          <div class="skill-head"><span class="skill-name">Express.js</span><span class="skill-tag">daily driver</span></div>
+          <div class="meter"><span class="meter-fill" data-level="90"></span></div>
+          <p class="skill-note">Clean, modular REST APIs with middleware, auth and RBAC.</p>
+        </article>
+        <article class="skill glass reveal" tabindex="0">
+          <div class="skill-head"><span class="skill-name">REST APIs</span><span class="skill-tag">production</span></div>
+          <div class="meter"><span class="meter-fill" data-level="90"></span></div>
+          <p class="skill-note">Designing consistent, well-documented endpoints at scale.</p>
+        </article>
+        <article class="skill glass reveal" tabindex="0">
+          <div class="skill-head"><span class="skill-name">MySQL</span><span class="skill-tag">relational</span></div>
+          <div class="meter"><span class="meter-fill" data-level="85"></span></div>
+          <p class="skill-note">Schema design and query tuning for transaction-safe workflows.</p>
+        </article>
+        <article class="skill glass reveal" tabindex="0">
+          <div class="skill-head"><span class="skill-name">MongoDB</span><span class="skill-tag">document</span></div>
+          <div class="meter"><span class="meter-fill" data-level="82"></span></div>
+          <p class="skill-note">Flexible schemas and aggregation pipelines for fast reads.</p>
+        </article>
+      </div>
+
+      <div class="also reveal">
+        <p class="also-label">// also working with</p>
+        <div class="pills">
+          <span class="pill">Redis</span>
+          <span class="pill">Apache Kafka</span>
+          <span class="pill">JWT / RBAC</span>
+          <span class="pill">Microservices</span>
+          <span class="pill">Azure DevOps</span>
+          <span class="pill">CI/CD</span>
+          <span class="pill">Git</span>
+          <span class="pill">Third-party API integration</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== PROJECTS ============================== -->
+    <section id="work" class="section wrap">
+      <div class="section-head">
+        <p class="eyebrow">work</p>
+        <h2>Things I've shipped</h2>
+        <p>Enterprise platforms and developer tooling — built to be fast, reliable, and maintainable.</p>
+      </div>
+
+      <div class="projects">
+        <!-- Project 1 -->
+        <article class="project glass reveal">
+          <div class="project-cover">
+            <span class="badge-priv">enterprise · private</span>
+            <!-- HR network: many nodes feeding a central API, with cache + queue chips -->
+            <svg viewBox="0 0 340 230" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <g stroke="#2DD4BF" stroke-opacity="0.35" stroke-width="1.2" fill="none">
+                <path d="M40 40 L170 115"/><path d="M40 115 L170 115"/><path d="M40 190 L170 115"/>
+                <path d="M90 30 L170 115"/><path d="M90 200 L170 115"/>
+              </g>
+              <g fill="#2DD4BF">
+                <circle cx="40" cy="40" r="5"/><circle cx="40" cy="115" r="5"/><circle cx="40" cy="190" r="5"/>
+                <circle cx="90" cy="30" r="4"/><circle cx="90" cy="200" r="4"/>
+              </g>
+              <rect x="150" y="98" width="44" height="34" rx="9" fill="#0E1424" stroke="#F5B544" stroke-width="1.4"/>
+              <text x="172" y="119" font-family="JetBrains Mono" font-size="11" fill="#F5B544" text-anchor="middle">API</text>
+              <g class="pulse" style="animation: ping 2s ease-out infinite paused;"><circle cx="172" cy="115" r="26" fill="none" stroke="#2DD4BF" stroke-opacity="0.4"/></g>
+              <rect x="250" y="70" width="62" height="26" rx="7" fill="#0E1424" stroke="#2DD4BF" stroke-opacity="0.5"/>
+              <text x="281" y="87" font-family="JetBrains Mono" font-size="10" fill="#2DD4BF" text-anchor="middle">Redis</text>
+              <rect x="250" y="134" width="62" height="26" rx="7" fill="#0E1424" stroke="#F5B544" stroke-opacity="0.5"/>
+              <text x="281" y="151" font-family="JetBrains Mono" font-size="10" fill="#F5B544" text-anchor="middle">Kafka</text>
+              <path d="M194 110 L250 83 M194 120 L250 147" stroke="#2DD4BF" stroke-opacity="0.3" stroke-width="1.2"/>
+            </svg>
+          </div>
+          <div class="project-body">
+            <p class="org">Jio Platforms · Reliance</p>
+            <h3>PeopleFirst</h3>
+            <p>Reliance's enterprise HR platform serving <strong style="color:var(--text)">250,000+ employees</strong> across web and mobile — attendance, payroll, access management, reimbursements and corporate services.</p>
+            <ul class="feat">
+              <li>Built &amp; maintained scalable RESTful APIs powering core HR workflows</li>
+              <li>Redis caching + Kafka async messaging for high-volume concurrent load</li>
+              <li>Optimized MySQL &amp; MongoDB queries for speed and transaction consistency</li>
+              <li>Integrated Thomas Cook &amp; FCM Travel for seamless booking workflows</li>
+              <li><strong style="color:var(--accent)">Cut endpoint latency by 30%</strong> via efficient API design</li>
+            </ul>
+            <div class="stack-row"><span>Node.js</span><span>Express.js</span><span>MySQL</span><span>MongoDB</span><span>Redis</span><span>Kafka</span></div>
+            <div class="project-links">
+              <span class="link-tag" title="Enterprise platform — source is private">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+                Confidential codebase
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project glass reveal">
+          <div class="project-cover">
+            <span class="badge-priv" style="color:var(--accent)">personal project</span>
+            <!-- Week grid with one booked slot + lock (JWT/RBAC) -->
+            <svg viewBox="0 0 340 230" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <g stroke="#2DD4BF" stroke-opacity="0.18" stroke-width="1">
+                <path d="M40 50 H300 M40 95 H300 M40 140 H300 M40 185 H300"/>
+                <path d="M90 30 V205 M140 30 V205 M190 30 V205 M240 30 V205"/>
+              </g>
+              <rect x="142" y="97" width="46" height="41" rx="6" fill="#2DD4BF" fill-opacity="0.18" stroke="#2DD4BF" stroke-width="1.4"/>
+              <rect x="192" y="52" width="46" height="41" rx="6" fill="#F5B544" fill-opacity="0.16" stroke="#F5B544" stroke-width="1.4"/>
+              <circle cx="265" cy="160" r="22" fill="#0E1424" stroke="#F5B544" stroke-width="1.6"/>
+              <g stroke="#F5B544" stroke-width="1.6" fill="none"><rect x="258" y="158" width="14" height="10" rx="2"/><path d="M261 158v-3a4 4 0 0 1 8 0v3"/></g>
+              <text x="60" y="220" font-family="JetBrains Mono" font-size="9" fill="#5C6678">mon</text>
+              <text x="160" y="220" font-family="JetBrains Mono" font-size="9" fill="#2DD4BF">booked</text>
+            </svg>
+          </div>
+          <div class="project-body">
+            <p class="org">Personal Project</p>
+            <h3>Meeting Room Booking System</h3>
+            <p>A RESTful API-based system for booking and scheduling meeting rooms, with secure auth and role-based permissions.</p>
+            <ul class="feat">
+              <li>RESTful booking API on Node.js, Express &amp; MongoDB</li>
+              <li>JWT authentication + role-based access control (RBAC)</li>
+              <li>MongoDB schemas for rooms, scheduling and user management</li>
+              <li>Modular architecture &amp; clean code for scalability</li>
+            </ul>
+            <div class="stack-row"><span>Node.js</span><span>Express.js</span><span>MongoDB</span><span>JWT</span><span>RBAC</span></div>
+            <div class="project-links">
+              <!-- TODO: replace with the exact repo URL -->
+              <a class="link-tag" href="https://github.com/PoojaBhayde" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 .1.8 1.8 2.8 1.3.1-.7.4-1.2.7-1.5-2.5-.3-5.2-1.3-5.2-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C18.8 5 19.8 5.3 19.8 5.3c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.2 5.7.4.3.8 1 .8 2.1v3.1c0 .3.2.7.8.6A11.5 11.5 0 0 0 23.5 12C23.5 5.7 18.3.5 12 .5z"/></svg>
+                View code
+              </a>
+              <span class="link-tag" title="REST API project — no public UI">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 9 5 12l3 3M16 9l3 3-3 3M13 6l-2 12"/></svg>
+                REST API · no UI
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project glass reveal">
+          <div class="project-cover">
+            <span class="badge-priv">internal tooling</span>
+            <!-- CI/CD pipeline: build -> test -> release with retrigger -->
+            <svg viewBox="0 0 340 230" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <line x1="55" y1="115" x2="285" y2="115" stroke="#2DD4BF" stroke-opacity="0.3" stroke-width="2"/>
+              <g font-family="JetBrains Mono" font-size="10" text-anchor="middle">
+                <circle cx="70" cy="115" r="24" fill="#0E1424" stroke="#2DD4BF" stroke-width="1.6"/><text x="70" y="119" fill="#2DD4BF">build</text>
+                <circle cx="170" cy="115" r="24" fill="#0E1424" stroke="#2DD4BF" stroke-width="1.6"/><text x="170" y="119" fill="#2DD4BF">test</text>
+                <circle cx="270" cy="115" r="24" fill="#0E1424" stroke="#F5B544" stroke-width="1.6"/><text x="270" y="119" fill="#F5B544">ship</text>
+              </g>
+              <g class="pulse" style="animation: ping 2s ease-out infinite paused;"><circle cx="270" cy="115" r="30" fill="none" stroke="#F5B544" stroke-opacity="0.4"/></g>
+              <path d="M270 75 a40 40 0 1 0 28 12" fill="none" stroke="#F5B544" stroke-opacity="0.5" stroke-width="1.4"/>
+              <path d="M296 84 l4 5 -7 1" fill="none" stroke="#F5B544" stroke-opacity="0.7" stroke-width="1.4"/>
+              <text x="170" y="190" font-family="JetBrains Mono" font-size="9" fill="#5C6678" text-anchor="middle">azure devops · retrigger by release id</text>
+            </svg>
+          </div>
+          <div class="project-body">
+            <p class="org">Jio · Internal Developer Tooling</p>
+            <h3>Azure DevOps Pipeline Automation</h3>
+            <p>An internal web app for Jio's engineering teams that simplifies CI/CD pipeline creation and release management via the Microsoft Azure DevOps APIs.</p>
+            <ul class="feat">
+              <li>Create &amp; configure pipelines with minimal input via a clean UI</li>
+              <li>Azure DevOps API integration for automated pipeline creation</li>
+              <li>Release retriggering using specific release IDs</li>
+              <li>Streamlined deployment workflows across CI/CD</li>
+            </ul>
+            <div class="stack-row"><span>Node.js</span><span>Express.js</span><span>Azure DevOps API</span></div>
+            <div class="project-links">
+              <span class="link-tag" title="Internal tool — source is private">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+                Internal · private
+              </span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================== TIMELINE ============================== -->
+    <section id="timeline" class="section wrap">
+      <div class="section-head" style="text-align:center; margin-inline:auto;">
+        <p class="eyebrow" style="justify-content:center;">journey</p>
+        <h2>Experience &amp; education</h2>
+      </div>
+
+      <div class="timeline">
+        <div class="tl-item reveal">
+          <p class="tl-date">Present</p>
+          <div class="tl-card glass">
+            <span class="tl-tag">current</span>
+            <h3>Software Development Engineer 1</h3>
+            <p class="tl-role">Jio Platforms pvt. ltd.</p>
+            <p>Building and owning scalable backend modules end-to-end for an HR platform serving 250,000+ employees, plus internal developer tooling for CI/CD automation.</p>
+          </div>
+        </div>
+
+        <div class="tl-item reveal">
+          <p class="tl-date">4+ years of backend engineering</p>
+          <div class="tl-card glass">
+            <h3>Production backend development</h3>
+            <p class="tl-role">Node.js · Express · MySQL · MongoDB · Redis · Kafka</p>
+            <p>Designing fast, reliable, production-grade APIs and services; query optimization, caching, async messaging and third-party integrations at enterprise scale.</p>
+          </div>
+        </div>
+
+        <!-- TODO: Replace with your real degree, institution and year. -->
+        <div class="tl-item edu reveal">
+          <p class="tl-date">Education</p>
+<div class="tl-card glass">
+            
+            <h3>B.E. Computer Engineering</h3>
+            <p class="tl-role">Konkan Gyanpeeth College Of Engg · 2020</p>
+          </div>
+          <div class="tl-card glass">
+         
+            <h3>Diploma in Computer Engineering</h3>
+            <p class="tl-role">SSOSP College Of Diploma Engg · 2017</p>
+          </div>
+
+        </div>
+
+        <!-- TODO: Replace with your real certifications, or remove this block. -->
+        <div class="tl-item edu reveal">
+          <p class="tl-date">Certifications</p>
+          <div class="tl-card glass">
+            <span class="tl-tag" style="background:var(--accent-2-soft); color:var(--accent-2);">edit me</span>
+            <h3>Your certifications</h3>
+            <p class="tl-role">Issuer · Year</p>
+            <p>List relevant certifications here — e.g. cloud, databases, or backend specializations.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== CONTACT ============================== -->
+    <section id="contact" class="section wrap">
+      <div class="contact-grid">
+        <div class="contact-aside">
+          <p class="eyebrow">contact</p>
+          <h2>Let's build something reliable.</h2>
+          <p>Open to backend roles and interesting systems problems. The fastest way to reach me is email — or pick a channel below.</p>
+
+          <div class="contact-list">
+            <a href="mailto:poojabhayde08@gmail.com">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+              <span><span class="ci-main">poojabhayde08@gmail.com</span><br><span class="ci-sub">Email me directly</span></span>
+            </a>
+            <a href="https://www.linkedin.com/in/pooja-bhayde-backend/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33 0-3.04-1.85-3.04s-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05a3.75 3.75 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45z"/></svg>
+              <span><span class="ci-main">pooja-bhayde-backend</span><br><span class="ci-sub">Connect on LinkedIn</span></span>
+            </a>
+            <a href="https://github.com/PoojaBhayde" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 .1.8 1.8 2.8 1.3.1-.7.4-1.2.7-1.5-2.5-.3-5.2-1.3-5.2-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C18.8 5 19.8 5.3 19.8 5.3c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.2 5.7.4.3.8 1 .8 2.1v3.1c0 .3.2.7.8.6A11.5 11.5 0 0 0 23.5 12C23.5 5.7 18.3.5 12 .5z"/></svg>
+              <span><span class="ci-main">github.com/PoojaBhayde</span><br><span class="ci-sub">See my code</span></span>
+            </a>
+            <div class="ci">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.3-7-11a7 7 0 0 1 14 0c0 5.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+              <span><span class="ci-main">Mumbai, India</span><br><span class="ci-sub">Open to remote &amp; hybrid</span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Static-friendly form: composes a mailto on submit (works with zero backend).
+             To deliver to your inbox instead, sign up at formspree.io / getform.io
+             and set: <form action="https://formspree.io/f/XXXX" method="POST"> and remove the JS handler. -->
+        <form class="contact-form glass" id="contactForm" novalidate>
+          <div class="field">
+            <label for="cf-name">Name <span class="req">*</span></label>
+            <input type="text" id="cf-name" name="name" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="cf-email">Email <span class="req">*</span></label>
+            <input type="email" id="cf-email" name="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="cf-subject">Subject</label>
+            <input type="text" id="cf-subject" name="subject" />
+          </div>
+          <div class="field">
+            <label for="cf-message">Message <span class="req">*</span></label>
+            <textarea id="cf-message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4 20-7z"/></svg>
+            Send message
+          </button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================== FOOTER ============================== -->
+  <footer class="site">
+    <div class="wrap footer-inner">
+      <p>© <span id="year">2026</span> Pooja Santosh Bhayde · Built with Node.js energy.</p>
+      <p class="uptime"><span class="dot" aria-hidden="true"></span> status: 200 OK</p>
+      <a href="#home" class="to-top">back to top
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 15 6-6 6 6"/></svg>
+      </a>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    "use strict";
+    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    /* ---------- Theme toggle (system-aware, gracefully persisted) ---------- */
+    var root = document.documentElement;
+    var metaTheme = document.getElementById("theme-color-meta");
+    function safeGet(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }
+    function safeSet(k,v){ try { localStorage.setItem(k,v); } catch(e){} }
+
+    var stored = safeGet("theme");
+    if (stored) {
+      root.setAttribute("data-theme", stored);
+    } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
+      root.setAttribute("data-theme", "light");
+    }
+    function syncMeta(){ metaTheme.setAttribute("content", root.getAttribute("data-theme") === "light" ? "#F5F7FB" : "#080C18"); }
+    syncMeta();
+
+    document.getElementById("themeToggle").addEventListener("click", function () {
+      var next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+      root.setAttribute("data-theme", next);
+      safeSet("theme", next);
+      syncMeta();
+    });
+
+    /* ---------- Nav scrolled state + mobile menu ---------- */
+    var nav = document.getElementById("nav");
+    var menu = document.getElementById("mobileMenu");
+    var burger = document.getElementById("hamburger");
+
+    function onScroll(){ nav.classList.toggle("scrolled", window.scrollY > 24); }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    burger.addEventListener("click", function () {
+      var open = menu.classList.toggle("open");
+      burger.setAttribute("aria-expanded", String(open));
+    });
+    menu.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", function () {
+        menu.classList.remove("open");
+        burger.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    /* ---------- Active nav link on scroll ---------- */
+    var navLinks = Array.prototype.slice.call(document.querySelectorAll('nav.links a'));
+    var sections = navLinks
+      .map(function (l) { return document.querySelector(l.getAttribute("href")); })
+      .filter(Boolean);
+    if ("IntersectionObserver" in window && sections.length) {
+      var navObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            var id = "#" + e.target.id;
+            navLinks.forEach(function (l) { l.classList.toggle("active", l.getAttribute("href") === id); });
+          }
+        });
+      }, { rootMargin: "-45% 0px -50% 0px" });
+      sections.forEach(function (s) { navObs.observe(s); });
+    }
+
+    /* ---------- Reveal on scroll + meters + stat count-up ---------- */
+    function fillMeters(scope){
+      (scope || document).querySelectorAll(".meter-fill").forEach(function (m) {
+        m.style.width = (m.getAttribute("data-level") || 0) + "%";
+      });
+    }
+    function countUp(el){
+      var target = parseFloat(el.getAttribute("data-count"));
+      var suffix = el.getAttribute("data-suffix") || "";
+      if (reduceMotion) { el.textContent = target + suffix; return; }
+      var start = performance.now(), dur = 1400;
+      function step(now){
+        var p = Math.min((now - start) / dur, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * eased) + suffix;
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    if ("IntersectionObserver" in window) {
+      var revObs = new IntersectionObserver(function (entries, obs) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          e.target.classList.add("in");
+          e.target.querySelectorAll && fillMeters(e.target);
+          var counter = e.target.querySelector ? e.target.querySelector("[data-count]") : null;
+          if (counter) countUp(counter);
+          if (e.target.hasAttribute && e.target.hasAttribute("data-count")) countUp(e.target);
+          obs.unobserve(e.target);
+        });
+      }, { threshold: 0.18 });
+      document.querySelectorAll(".reveal").forEach(function (el) { revObs.observe(el); });
+    } else {
+      document.querySelectorAll(".reveal").forEach(function (el){ el.classList.add("in"); });
+      fillMeters(document);
+      document.querySelectorAll("[data-count]").forEach(countUp);
+    }
+
+    /* ---------- Live request log (signature + typing effect) ---------- */
+    var body = document.getElementById("termBody");
+    var entries = [
+      { m: "GET",  cls: "m-get",  path: "/api/v2/employees?dept=ops",  ms: "41ms" },
+      { m: "POST", cls: "m-post", path: "/api/v2/attendance/check-in", ms: "28ms" },
+      { sys: "cache", path: "redis HIT employees:ops:page1",            ms: "2ms"  },
+      { m: "GET",  cls: "m-get",  path: "/api/v2/payroll/2026-06",      ms: "63ms" },
+      { m: "POST", cls: "m-post", path: "/api/v2/reimbursements",       ms: "37ms" },
+      { sys: "queue", path: "kafka \u2192 payroll.calculated",          ms: "9ms"  },
+      { m: "PUT",  cls: "m-put",  path: "/api/v2/access/grant",         ms: "22ms" },
+      { m: "GET",  cls: "m-get",  path: "/api/v2/bookings/travel",      ms: "55ms" }
+    ];
+    var MAX_ROWS = 7;
+
+    function buildRow(e, typed){
+      var row = document.createElement("div");
+      row.className = "log-row";
+      var label = e.sys
+        ? '<span class="tag-sys">[' + e.sys + ']</span>'
+        : '<span class="method ' + e.cls + '">' + e.m + '</span>';
+      var status = e.sys ? '<span class="code">ack</span>' : '<span class="code">200</span>';
+      row.innerHTML = label +
+        '<span class="path">' + (typed !== undefined ? typed : e.path) + '</span>' +
+        status + '<span class="ms">' + e.ms + '</span>';
+      return row;
+    }
+
+    if (reduceMotion) {
+      entries.slice(0, MAX_ROWS).forEach(function (e) { body.appendChild(buildRow(e)); });
+    } else {
+      var idx = 0;
+      function trim(){ while (body.children.length > MAX_ROWS) body.removeChild(body.firstChild); }
+      function typeRow(e, done){
+        var row = buildRow(e, "");
+        var pathEl = row.querySelector(".path");
+        var cur = document.createElement("span");
+        cur.className = "cursor";
+        pathEl.appendChild(cur);
+        body.appendChild(row);
+        trim();
+        var i = 0;
+        (function tick(){
+          if (i <= e.path.length) {
+            pathEl.textContent = e.path.slice(0, i);
+            pathEl.appendChild(cur);
+            i++;
+            setTimeout(tick, 18);
+          } else {
+            cur.remove();
+            setTimeout(done, 750);
+          }
+        })();
+      }
+      function loop(){
+        typeRow(entries[idx % entries.length], function(){ idx++; loop(); });
+      }
+      loop();
+    }
+
+    /* ---------- Contact form (mailto compose; static-host friendly) ---------- */
+    var form = document.getElementById("contactForm");
+    var status = document.getElementById("formStatus");
+    if (form) {
+      form.addEventListener("submit", function (ev) {
+        ev.preventDefault();
+        var f = form.elements;
+        var name = f["name"].value.trim();
+        var email = f["email"].value.trim();
+        var subject = f["subject"].value.trim();
+        var message = f["message"].value.trim();
+        var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+        if (!name || !emailOk || !message) {
+          status.className = "form-status err";
+          status.textContent = "// please add your name, a valid email, and a message.";
+          return;
+        }
+        var sub = encodeURIComponent(subject || ("Portfolio enquiry from " + name));
+        var bodyText = encodeURIComponent(message + "\n\n— " + name + " (" + email + ")");
+        window.location.href = "mailto:poojabhayde08@gmail.com?subject=" + sub + "&body=" + bodyText;
+        status.className = "form-status ok";
+        status.textContent = "// opening your email app… if nothing happens, write to poojabhayde08@gmail.com";
+        form.reset();
+      });
+    }
+
+    /* ---------- Footer year ---------- */
+    document.getElementById("year").textContent = new Date().getFullYear();
+  })();
+  </script>
+</body>
+</html>
